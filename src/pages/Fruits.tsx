@@ -23,29 +23,27 @@ export function Fruits() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Data Add Training</h2>
-        <div>
-          <h3>Add Fruit (string)</h3>
-          <input type="text" name="name" />
-          <button>Add</button>
-        </div>
-        <div>
-          <h3>Add Fruit (object)</h3>
-          <input type="text" name="name" />
-          <button>Add</button>
-        </div>
+    <div>
+      <h2>Data Add Training</h2>
+      <div>
+        <h3>Add Fruit (string)</h3>
+        <input type="text" name="name" autoComplete="off" />
+        <button>Add</button>
+      </div>
+      <div>
+        <h3>Add Fruit (object)</h3>
+        <input type="text" name="name" autoComplete="off"/>
+        <button>Add</button>
+      </div>
 
-        {/* TODO: map through fruit strings and show */}
-        <div className="fruits-flat">
-          
-        </div>
-        {/* TODO: map through fruit objects and show */}
-        <div className="fruits-objects">
-          
-        </div>
-      </header>
+      {/* TODO: map through fruit strings and show */}
+      <div className="fruits-flat">
+
+      </div>
+      {/* TODO: map through fruit objects and show */}
+      <div className="fruits-objects">
+
+      </div>
     </div>
   )
 

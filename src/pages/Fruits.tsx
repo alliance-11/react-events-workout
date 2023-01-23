@@ -25,13 +25,25 @@ export function Fruits() {
     setFruitStringNew("");
   };
 
-  const handleFruitObjectChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleFruitObjectChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
     setFruitObjectNew({ ...fruitObjectNew, name: e.target.value });
   };
 
-  const onAddFruitObject = () => {
-    setFruitObjects([...fruitObjects, fruitObjectNew] )
-    setFruitObjectNew({...fruitObjectNew, _id: Date.now().toString(), name:""})
+  const addFruitObject = () => {
+    setFruitObjects([...fruitObjects, fruitObjectNew]);
+    setFruitObjectNew({
+      ...fruitObjectNew,
+      _id: Date.now().toString(),
+      name: "",
+    });
+  };
+
+  const deleteFruitObject = (id: string) => {
+    const deleteFruit = fruitObjects.filter((f) => f._id !== id);
+    setFruitObjects(deleteFruit);
+    console.log("deleteFruit:", deleteFruit);
   };
 
   return (
@@ -67,13 +79,19 @@ export function Fruits() {
           value={fruitObjectNew.name}
           onChange={handleFruitObjectChange}
         />
-        <button onClick={onAddFruitObject}>Add</button>
+        <button onClick={addFruitObject}>Add</button>
       </div>
       {/* TODO: map through fruit objects and show */}
       <div className="fruits-objects">
-        {fruitObjects.map((fruit) => (
-          <div key={fruit._id} className="name">
-            {fruit.name}
+        {fruitObjects.map((fruit, index) => (
+          <div key={fruit._id} className="item">
+            <span className="name">
+              {index + 1}: &nbsp; {fruit.name}
+            </span>{" "}
+            &nbsp;&nbsp;
+            <button type="button" onClick={() => deleteFruitObject(fruit._id)}>
+              x
+            </button>
           </div>
         ))}
       </div>

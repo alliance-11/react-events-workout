@@ -1,6 +1,10 @@
+import { useState } from "react"
+
 export function Change() {
 
-  const changeName: React.ChangeEventHandler<HTMLInputElement> = () => {
+  const [name, setName] = useState("")
+
+  const changeName: React.ChangeEventHandler<HTMLInputElement> = ( event ) => {
 
   }
 

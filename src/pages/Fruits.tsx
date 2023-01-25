@@ -19,23 +19,26 @@ export function Fruits() {
     _id: Math.random().toString(),
     name: "",
   });
-
+  // STRING
   const onAddFruitFlat = () => {
     setFruitStrings([...fruitStrings, fruitStringNew]);
     setFruitStringNew("");
   };
 
+  const removeString = (str: string) => {
+    setFruitStrings(fruitStrings.filter((string) => string !== str));
+  };
+  // OBJECT
   const handleFruitObjectChange: React.ChangeEventHandler<HTMLInputElement> = (
     e
   ) => {
     setFruitObjectNew({ ...fruitObjectNew, name: e.target.value });
   };
-
   const addFruitObject = () => {
     setFruitObjects([...fruitObjects, fruitObjectNew]);
     setFruitObjectNew({
       ...fruitObjectNew,
-      _id: Date.now().toString(),
+      // _id: Date.now().toString(),
       name: "",
     });
   };
@@ -63,9 +66,12 @@ export function Fruits() {
       </div>
       {/* TODO: map through fruit strings and show */}
       <div className="fruits-flat">
-        {fruitStrings.map((fruitString) => (
-          <div key={fruitString} className="str">
-            {fruitString}
+        {fruitStrings.map((str, index) => (
+          <div key={str} className="str">
+            <span>
+              {index + 1}: &nbsp; {str} &nbsp;
+            </span>
+            <button onClick={() => removeString(str)}>x</button>
           </div>
         ))}
       </div>
